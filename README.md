@@ -12,7 +12,7 @@
 `<tensor>.unsqueeze(axis)`
 
 ##### Running on multiple GPUs
-After instantiating the model 
+Instantiate the model first and then call DataParallel. todo: Add a way to specify the number of GPUs.
 
 `model = Net()`
 
