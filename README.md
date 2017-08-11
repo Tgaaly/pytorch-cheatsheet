@@ -19,7 +19,7 @@ torch.div(x, y)
 `data = data.cuda()`
 
 ##### Pytorch Variable
-The pytorch Variable has a "data" tensor under it:
+The pytorch `torch.autograd.Variable` has a "data" tensor under it:
 `data_variable.data`
 
 ##### Moving data from GPU to CPU
