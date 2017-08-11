@@ -16,6 +16,7 @@ Don't forget to set the input to the graph/net to `volatile=True`
 
 Example:
 `data = Variable(data, volatile=True)`
+
 `output = model(data)`
 
 #####
