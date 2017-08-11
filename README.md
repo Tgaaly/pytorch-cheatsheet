@@ -15,7 +15,7 @@ torch.sum(x, dim=<dim>)
 torch.div(x, y)
 ```
 ##### Convert numpy array to pytorch tensor
-b = torch.from_numpy(a)
+`b = torch.from_numpy(a)`
 
 ##### Moving data from CPU to GPU
 `data = data.cuda()`
