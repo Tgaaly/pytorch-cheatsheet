@@ -1,6 +1,13 @@
 # pytorch-cheatsheet
 
 
+##### Commonly used types of tensors
+`torch.FloatTensor`
+
+`torch.DoubleTensor`
+
+`torch.LongTensor`
+
 ##### Add a dimenstion to a torch tensor
 `<tensor>.unsqueeze(axis)`
 
@@ -41,6 +48,9 @@ class FooDataset(torch.utils.data.Dataset):
     return <length of dataset>
 ```
 
-#####
+##### Conv2d layer
+`torch.nn.Conv2d(in_channels, out_channels, (kernel_w, kernel_h), stride=(x,y), padding=(x,y), bias=False, dilation=<d>)`
 
-#####
+
+##### Transpose Conv2d layer ('Deconvolution layer')
+`torch.nn.ConvTranspose2d(in_channels, out_channels, (kernel_w, kernel_h), stride=(x,y), padding=(x,y), output_padding=(x,y), bias=False, dilation=<d>)`
