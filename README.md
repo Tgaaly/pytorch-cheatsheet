@@ -29,7 +29,8 @@ Inherit from torch.utils.data and overload `__getitem__()` and `__len()__`
 
 Example:
 
-`class FooDataset(torch.utils.data.Dataset):
+```
+class FooDataset(torch.utils.data.Dataset):
   def __init__(self):
     ...
   def __getitem__(self, idx):
@@ -38,7 +39,7 @@ Example:
   def __len__(self):
     ...
     return <length of dataset>
-    
+```
 
 #####
 
