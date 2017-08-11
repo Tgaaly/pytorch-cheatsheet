@@ -12,7 +12,10 @@
 `<tensor>.unsqueeze(axis)`
 
 ##### Running on multiple GPUs
-After instantiating the model (model = Net())
+After instantiating the model 
+
+`model = Net()`
+
 `model = torch.nn.DataParallel(model)`
 
 ##### Vectorize a tensor
