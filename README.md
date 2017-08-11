@@ -8,6 +8,32 @@
 
 `torch.LongTensor`
 
+##### Common pytorch functions
+```
+torch.log(x)
+torch.sum(x, dim=<dim>)
+torch.div(x, y)
+```
+
+##### Moving data from CPU to GPU
+`data = data.cuda()`
+
+##### Pytorch Variable
+The pytorch Variable has a "data" tensor under it:
+`data_variable.data`
+
+##### Moving data from GPU to CPU
+`data = data.cpu()`
+
+##### Convert tensor to numpy array
+`data_arr = data_tensor.numpy()`
+
+##### Moving a Variable to CPU and converting to numpy array
+`data = data.data.cpu().numpy()`
+
+##### Viewing the size of a tensor
+`data.size()`
+
 ##### Add a dimenstion to a torch tensor
 `<tensor>.unsqueeze(axis)`
 
