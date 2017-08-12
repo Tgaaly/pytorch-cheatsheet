@@ -49,18 +49,11 @@ Instantiate the model first and then call DataParallel. todo: Add a way to speci
 ##### Vectorize a tensor
 `<tensor>.view(-1)`
 
-##### Volatile at inference time
-Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients.
-
-Example:
-
-`data = Variable(data, volatile=True)`
-
-`output = model(data)`
-
 ##### Transpose a tensor
 Transpose axis1 and axis2
 `<tensor>.transpose(axis1, axis2)`
+
+## Datasets and Data Loaders
 
 ##### Creating a dataset and enumerating over it
 Inherit from torch.utils.data and overload `__getitem__()` and `__len()__`
@@ -95,9 +88,23 @@ for batch_idx, batch in enumerate(data_loader):
   label = Variable(label)
 ```
 
+## Convolutional Layers
+
 ##### Conv2d layer
 `torch.nn.Conv2d(in_channels, out_channels, (kernel_w, kernel_h), stride=(x,y), padding=(x,y), bias=False, dilation=<d>)`
 
 
 ##### Transpose Conv2d layer ('Deconvolution layer')
 `torch.nn.ConvTranspose2d(in_channels, out_channels, (kernel_w, kernel_h), stride=(x,y), padding=(x,y), output_padding=(x,y), bias=False, dilation=<d>)`
+
+
+## Model Inference
+
+##### Volatile at inference time
+Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients.
+
+Example:
+
+`data = Variable(data, volatile=True)`
+
+`output = model(data)`
