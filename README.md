@@ -1,5 +1,6 @@
 # pytorch-cheatsheet
 
+## Tensor Types and Operations
 
 ##### Commonly used types of tensors
 `torch.FloatTensor`
