@@ -49,7 +49,7 @@ Instantiate the model first and then call DataParallel. todo: Add a way to speci
 
 ##### Setting the GPUs
 
-Usage of the `torch.cuda.set_device(gpu_idx)` is discouraged in favor of device. In most cases it’s better to use the  `CUDA_VISIBLE_DEVICES` environmental variable.
+Usage of the `torch.cuda.set_device(gpu_idx)` is discouraged in favor of `device()`. In most cases it’s better to use the `CUDA_VISIBLE_DEVICES` environmental variable.
 
 ##### Vectorize a tensor
 `<tensor>.view(-1)`
