@@ -40,7 +40,27 @@ The pytorch `torch.autograd.Variable` has a "data" tensor under it:
 ##### Add a dimenstion to a torch tensor
 `<tensor>.unsqueeze(axis)`
 
-##### Running on multiple GPUs
+##### Reshaping tensors
+The equivalent of numpy's `reshape()` in torch is `view()`
+
+Examples:
+
+```
+a = torch.range(1, 16)
+a = a.view(4, 4)        # reshapes from 1 x 16 to 4 x 4
+```
+
+`<tensor>.view(-1)` vectorizes a tensor.
+
+##### Transpose a tensor
+Transpose axis1 and axis2
+`<tensor>.transpose(axis1, axis2)`
+
+
+## Running on multiple GPUs
+
+##### Multiple GPUs for training
+
 Instantiate the model first and then call DataParallel. todo: Add a way to specify the number of GPUs.
 
 `model = Net()`
@@ -51,12 +71,7 @@ Instantiate the model first and then call DataParallel. todo: Add a way to speci
 
 Usage of the `torch.cuda.set_device(gpu_idx)` is discouraged in favor of `device()`. In most cases it’s better to use the `CUDA_VISIBLE_DEVICES` environmental variable.
 
-##### Vectorize a tensor
-`<tensor>.view(-1)`
 
-##### Transpose a tensor
-Transpose axis1 and axis2
-`<tensor>.transpose(axis1, axis2)`
 
 ## Datasets and Data Loaders
 
