@@ -17,7 +17,9 @@ torch.div(x, y)
 ```
 ##### Convert numpy array to pytorch tensor
 `b = torch.from_numpy(a)`
+
 If a is a float numpy array, then b will be a `torch.DoubleTensor`. To override this you can do the following:
+
 `b = torch.FloatTensor(a)`
 
 ##### Moving data from CPU to GPU
