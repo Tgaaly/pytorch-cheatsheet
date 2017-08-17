@@ -18,7 +18,7 @@ torch.div(x, y)
 ##### Convert numpy array to pytorch tensor
 `b = torch.from_numpy(a)`
 
-If a is a float numpy array, then b will be a `torch.DoubleTensor`. To override this you can do the following:
+The above keeps the original dtype of the data (e.g. float64 becomes `torch.DoubleTensor`). To override this you can do the following (to cast it to a `torch.FloatTensor`):
 
 `b = torch.FloatTensor(a)`
 
