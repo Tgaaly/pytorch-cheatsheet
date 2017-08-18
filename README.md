@@ -3,6 +3,8 @@
 ## Tensor Types and Operations
 
 ##### Commonly used types of tensors
+`torch.IntTensor`
+
 `torch.FloatTensor`
 
 `torch.DoubleTensor`
