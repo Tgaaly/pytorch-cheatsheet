@@ -80,7 +80,7 @@ Usage of the `torch.cuda.set_device(gpu_idx)` is discouraged in favor of `device
 ## Datasets and Data Loaders
 
 ##### Creating a dataset and enumerating over it
-Inherit from torch.utils.data and overload `__getitem__()` and `__len()__`
+Inherit from `torch.utils.data.Dataset` and overload `__getitem__()` and `__len()__`
 
 Example:
 
@@ -125,10 +125,13 @@ for batch_idx, batch in enumerate(data_loader):
 ## Model Inference
 
 ##### Volatile at inference time
-Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients.
+Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients. `model.eval()` sets batchnorm and dropout to inference/test mode, insteasd of training mode which is the default when the model is instantiated. If at least one torch Variable is not volatile in the graph (including the input variable being fed into the network graph), it will cause gradients to be computed in the graph even if `model.eval()` was called. This will take up extra memory. 
 
 Example:
 
 `data = Variable(data, volatile=True)`
 
 `output = model(data)`
+
+## Saving/Loading Pytorch Models
+Currently there is no supported way within Pytorch to serve models. For the sake of resuming training Pytorch allows saving and loading the models through two means - see http://pytorch.org/docs/master/notes/serialization.html. Beware that load/save pytorch models breaks down if the directory structure or class definitions change so when its time to deploy the model (and by this I mean running it purely from python) the model class has to be added to the python path in order for the class to be instantiated. It's actually very weird. If you save a model, change the directory structure (e.g. put the model in a subfolder) and try to load the model - it will not load. It will complain that it cannot find the class definition. The work around would be to add the class definition to your python path. I'll add an example on this later on.
