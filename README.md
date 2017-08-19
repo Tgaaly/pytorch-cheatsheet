@@ -68,13 +68,15 @@ Transpose axis1 and axis2
 
 ## Running on multiple GPUs
 
-##### Multiple GPUs for training
+##### Multiple GPUs/CPUs for training
 
 Instantiate the model first and then call DataParallel. todo: Add a way to specify the number of GPUs.
 
 `model = Net()`
 
 `model = torch.nn.DataParallel(model)`
+
+Pytorch 0.2.0 supports distributed data parallelism, i.e. training over multiple nodes (CPUs and GPUs)
 
 ##### Setting the GPUs
 
