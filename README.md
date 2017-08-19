@@ -1,5 +1,11 @@
 # pytorch-cheatsheet
 
+Pytorch Documentation: 
+http://pytorch.org/docs/master/
+
+Pytorch Forums: 
+https://discuss.pytorch.org/
+
 ## Tensor Types and Operations
 
 ##### Commonly used types of tensors
