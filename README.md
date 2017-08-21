@@ -1,5 +1,7 @@
 # pytorch-cheatsheet
 
+A cheatsheet to cover the most commonly used aspects of PyTorch!
+
 Pytorch Documentation: 
 http://pytorch.org/docs/master/
 
