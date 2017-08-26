@@ -84,6 +84,9 @@ Instantiate the model first and then call DataParallel. todo: Add a way to speci
 
 `model = torch.nn.DataParallel(model)`
 
+For specifying the GPU devices: 
+`model = torch.nn.DataParallel(model, device_ids=[0,1,2,3]).cuda()`
+
 Pytorch 0.2.0 supports distributed data parallelism, i.e. training over multiple nodes (CPUs and GPUs)
 
 ##### Setting the GPUs
