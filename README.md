@@ -163,7 +163,7 @@ Beware that load/save pytorch models breaks down if the directory structure or c
 Will add the most common loss functions here (e.g. 2D pixel-wise cross-entropy, ...etc.). Stay tuned...
 
 ## Training an RNN with features from a CNN
-Use `torch.stack(seq, dim=1)` to stack all the features from the CNNs into a sequence. Then feed this into the RNN. Remember you can specify the batch size as the first dimension of the input tensor but you have to set the `batch_first=True` argument when instantiating the RNN (by default it is set to False).
+Use `torch.stack(feature_seq, dim=1)` to stack all the features from the CNNs into a sequence. Then feed this into the RNN. Remember you can specify the batch size as the first dimension of the input tensor but you have to set the `batch_first=True` argument when instantiating the RNN (by default it is set to False).
 
 Example:
 ```
