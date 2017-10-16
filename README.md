@@ -130,6 +130,9 @@ for batch_idx, batch in enumerate(data_loader):
   label = Variable(label)
 ```
 
+## Setting Torch Random Seed
+Use `torch.manual_seed(seed)` in addition to `np.random.seed(seed)` to make training deterministic. I believe in the future torch will use the numpy seed so they won't be separate anymore. 
+
 ## Convolutional Layers
 
 ##### Conv2d layer
