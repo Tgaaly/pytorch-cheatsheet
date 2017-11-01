@@ -73,6 +73,12 @@ a = a.view(4, 4)        # reshapes from 1 x 16 to 4 x 4
 Transpose axis1 and axis2
 `<tensor>.transpose(axis1, axis2)`
 
+##### Outer product
+Outer product between two vectors `vec1` and `vec2`
+```
+output = vec1.unsqueeze(2)*vec2.unsqueeze(1)
+output = output.view(output.size(0),-1)
+```
 
 ## Running on multiple GPUs
 
