@@ -178,3 +178,7 @@ Example:
 ```
  self.rnn1 = torch.nn.GRU(input_size=input_size, hidden_size=hidden_size, num_layers=2, batch_first=True)
 ```
+
+In Pytorch you can write any loss you want as long as you stick to using Pytorch `Variables` (without any `.data` unpacking or numpy conversions) and `torch` functions. The loss will not backprop (when using `loss.backward()`) if you use numpy data structures.
+
+
