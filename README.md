@@ -72,11 +72,12 @@ a = a.view(4, 4)        # reshapes from 1 x 16 to 4 x 4
 ##### Operations between Pytorch Variables and Numpy variables
 The Numpy variables have to be first converted to `torch.Tensor` and then converted to pytorch `torch.autograd.Variable`. 
 An example is shown below.
+
 ```
 matrix_tensor = torch.Tensor(matrix_numpy)
 # Use cuda() if everything will be calculated on GPU
 matrix_pytorch_variable_cuda_from_numpy = torch.autograd.Variable(matrix_tensor, requires_grad=False).cuda()
-reg64 = F.mse_loss(matrix_pytorch_variable_cuda, matrix_pytorch_variable_cuda_from_numpy)
+loss = F.mse_loss(matrix_pytorch_variable_cuda, matrix_pytorch_variable_cuda_from_numpy)
 ```
 
 ##### Batch matrix operations
@@ -84,7 +85,6 @@ reg64 = F.mse_loss(matrix_pytorch_variable_cuda, matrix_pytorch_variable_cuda_fr
 # Batch matrix multiply
 torch.btorch.bmm(batch1, batch2, out=None)
 ```
-
 ##### Transpose a tensor
 Transpose axis1 and axis2
 `<tensor>.transpose(axis1, axis2)`
