@@ -1,6 +1,6 @@
 # New in Pytorch v0.4.0
 
-- `Tensors` and Variables have merged
+- `Tensors` and `Variable` have merged
 - Deprecation of `volatile`
 
 More information here: https://github.com/pytorch/pytorch/releases
