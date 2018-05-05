@@ -1,3 +1,8 @@
+# New in Pytorch v0.4.0
+
+- deprecation of `volatile`
+
+
 # pytorch-cheatsheet
 
 A cheatsheet to cover the most commonly used aspects of PyTorch!
