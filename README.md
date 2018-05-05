@@ -1,7 +1,9 @@
 # New in Pytorch v0.4.0
 
-- deprecation of `volatile`
+- `Tensors` and Variables have merged
+- Deprecation of `volatile`
 
+More information here: https://github.com/pytorch/pytorch/releases
 
 # pytorch-cheatsheet
 
@@ -174,6 +176,8 @@ Use `torch.manual_seed(seed)` in addition to `np.random.seed(seed)` to make trai
 
 ##### Volatile at inference time
 Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients. `model.eval()` sets batchnorm and dropout to inference/test mode, insteasd of training mode which is the default when the model is instantiated. If at least one torch Variable is not volatile in the graph (including the input variable being fed into the network graph), it will cause gradients to be computed in the graph even if `model.eval()` was called. This will take up extra memory. 
+
+Important `volatile` has been deprecated as of v0.4.0. Now it has been replaced with `requires_grad` (attribute of `Tensor`), `torch.no_grad()`, `torch.set_grad_enabled(grad_mode)`. See information here: https://github.com/pytorch/pytorch/releases
 
 Example:
 
