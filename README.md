@@ -174,6 +174,19 @@ Use `torch.manual_seed(seed)` in addition to `np.random.seed(seed)` to make trai
 
 ## Model Inference
 
+##### Deploying/Serving Pytorch to Production
+
+[copied from here https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html]
+Using NVIDIA TensorRT. NVIDIA TensorRT is a C++ library that facilitates high performance inference on NVIDIA graphics processing units (GPUs). TensorRT takes a network definition and optimizes it by merging tensors and layers, transforming weights, choosing efficient intermediate data formats, and selecting from a large kernel catalog based on layer parameters and measured performance.
+
+TensorRT consists of import methods to help you express your trained deep learning model for TensorRT to optimize and run. It is an optimization tool that applies graph optimization and layer fusion and finds the fastest implementation of that model leveraging a diverse collection of highly optimized kernels, and a runtime that you can use to execute this network in an inference context.
+
+TensorRT includes an infrastructure that allows you to leverage high speed reduced precision capabilities of Pascal GPUs as an optional optimization.
+
+Example of doing this for Pytorch and TensorRT 0.3.
+https://docs.nvidia.com/deeplearning/sdk/tensorrt-api/topics/topics/workflows/manually_construct_tensorrt_engine.html
+
+
 ##### Volatile at inference time
 Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients. `model.eval()` sets batchnorm and dropout to inference/test mode, insteasd of training mode which is the default when the model is instantiated. If at least one torch Variable is not volatile in the graph (including the input variable being fed into the network graph), it will cause gradients to be computed in the graph even if `model.eval()` was called. This will take up extra memory. 
 
