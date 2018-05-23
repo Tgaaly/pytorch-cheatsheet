@@ -177,6 +177,7 @@ Use `torch.manual_seed(seed)` in addition to `np.random.seed(seed)` to make trai
 ##### Deploying/Serving Pytorch to Production
 
 [copied from here https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html]
+
 Using NVIDIA TensorRT. NVIDIA TensorRT is a C++ library that facilitates high performance inference on NVIDIA graphics processing units (GPUs). TensorRT takes a network definition and optimizes it by merging tensors and layers, transforming weights, choosing efficient intermediate data formats, and selecting from a large kernel catalog based on layer parameters and measured performance.
 
 TensorRT consists of import methods to help you express your trained deep learning model for TensorRT to optimize and run. It is an optimization tool that applies graph optimization and layer fusion and finds the fastest implementation of that model leveraging a diverse collection of highly optimized kernels, and a runtime that you can use to execute this network in an inference context.
