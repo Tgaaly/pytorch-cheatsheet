@@ -189,7 +189,7 @@ For installation and setup, see link above. I would recommend following the tar 
 A summary of the steps I did to get this work was:
 * Install pycuda first: `pip install 'pycuda>=2017.1.1'` (had problems with pycuda installation. couldnt find cuda.h - so installed cuda-9.0 and updated `PATH` and `LD_LIBRARY_PATH` in `~/.bashrc` and sourced.
 * Downloaded tensorRT tar and followed instructions to install (e.g. `pip install tensorRT/python/<path-to-wheel>.whl` and `pip install tensorRT/uff/<path-to-wheel>.whl`).
-3. To verify I made sure I could do the following (of course you have to install tensorflow - see below):
+* To verify I made sure I could do the following (of course you have to install tensorflow - see below):
 ```
     import tensorflow
     import uff 
