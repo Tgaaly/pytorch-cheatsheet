@@ -174,6 +174,17 @@ Use `torch.manual_seed(seed)` in addition to `np.random.seed(seed)` to make trai
 
 ## Model Inference
 
+##### Volatile at inference time
+Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients. `model.eval()` sets batchnorm and dropout to inference/test mode, insteasd of training mode which is the default when the model is instantiated. If at least one torch Variable is not volatile in the graph (including the input variable being fed into the network graph), it will cause gradients to be computed in the graph even if `model.eval()` was called. This will take up extra memory. 
+
+Important: `volatile` has been deprecated as of v0.4.0. Now it has been replaced with `requires_grad` (attribute of `Tensor`), `torch.no_grad()`, `torch.set_grad_enabled(grad_mode)`. See information here: https://github.com/pytorch/pytorch/releases
+
+Example:
+
+`data = Variable(data, volatile=True)`
+
+`output = model(data)`
+
 ##### Deploying/Serving Pytorch to Production Using TensorRT
 
 [copied from here https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html]
@@ -203,18 +214,6 @@ else just use `pip install tensorflow-gpu` for the latest version.
 
 Example of doing this for Pytorch and tensorRT 3.0 (this also worked for my tensorRT version of 4.0): 
 https://docs.nvidia.com/deeplearning/sdk/tensorrt-api/topics/topics/workflows/manually_construct_tensorrt_engine.html
-
-
-##### Volatile at inference time
-Don't forget to set the input to the graph/net to `volatile=True`. Even if you do `model.eval()`, if the input data is not set to volatile then memory will be used up to compute the gradients. `model.eval()` sets batchnorm and dropout to inference/test mode, insteasd of training mode which is the default when the model is instantiated. If at least one torch Variable is not volatile in the graph (including the input variable being fed into the network graph), it will cause gradients to be computed in the graph even if `model.eval()` was called. This will take up extra memory. 
-
-Important: `volatile` has been deprecated as of v0.4.0. Now it has been replaced with `requires_grad` (attribute of `Tensor`), `torch.no_grad()`, `torch.set_grad_enabled(grad_mode)`. See information here: https://github.com/pytorch/pytorch/releases
-
-Example:
-
-`data = Variable(data, volatile=True)`
-
-`output = model(data)`
 
 ## Saving/Loading Pytorch Models
 Update: Pytorch now supports exporting models to other frameworks starting with Caffe2AI and MSCNTK. So now models can be deployed/served!
