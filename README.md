@@ -174,7 +174,7 @@ Use `torch.manual_seed(seed)` in addition to `np.random.seed(seed)` to make trai
 
 ## Model Inference
 
-##### Deploying/Serving Pytorch to Production
+##### Deploying/Serving Pytorch to Production Using TensorRT
 
 [copied from here https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html]
 
@@ -184,7 +184,23 @@ TensorRT consists of import methods to help you express your trained deep learni
 
 TensorRT includes an infrastructure that allows you to leverage high speed reduced precision capabilities of Pascal GPUs as an optional optimization.
 
-Example of doing this for Pytorch and TensorRT 0.3.
+For installation and setup, see link above. I would recommend following the tar installation. I found an error with `cuda.h` not being found so had to make sure my cuda version was properly setup and upgraded to cuda-9.0. The tar installation should lead you through installing pycuda, tensorRT and UFF.
+
+A summary of the steps I did to get this work was:
+* Install pycuda first: `pip install 'pycuda>=2017.1.1'` (had problems with pycuda installation. couldnt find cuda.h - so installed cuda-9.0 and updated `PATH` and `LD_LIBRARY_PATH` in `~/.bashrc` and sourced.
+* Downloaded tensorRT tar and followed instructions to install (e.g. `pip install tensorRT/python/<path-to-wheel>.whl` and `pip install tensorRT/uff/<path-to-wheel>.whl`).
+3. To verify I made sure I could do the following (of course you have to install tensorflow - see below):
+```import tensorflow
+   import uff 
+   import tensorrt as trr
+```
+This worked with tensorRT v4.0.0.3, cuda-9.0, tensorflow version: 1.4.1, pytorch version: 0.3.0.post4. Pytorch was needed for the example below of converting a pytorch model to run on an tensorRT engine.
+
+Once installed you have to also install tensorflow.
+For tensorflow-gpu with cuda8 use (tensorflow version 1.5 uses cuda 9.0): `pip install tensorflow-gpu==1.4.1`
+else just use `pip install tensorflow-gpu` for the latest version.
+
+Example of doing this for Pytorch and tensorRT 3.0 (this also worked for my tensorRT version of 4.0): 
 https://docs.nvidia.com/deeplearning/sdk/tensorrt-api/topics/topics/workflows/manually_construct_tensorrt_engine.html
 
 
