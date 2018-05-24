@@ -190,9 +190,10 @@ A summary of the steps I did to get this work was:
 * Install pycuda first: `pip install 'pycuda>=2017.1.1'` (had problems with pycuda installation. couldnt find cuda.h - so installed cuda-9.0 and updated `PATH` and `LD_LIBRARY_PATH` in `~/.bashrc` and sourced.
 * Downloaded tensorRT tar and followed instructions to install (e.g. `pip install tensorRT/python/<path-to-wheel>.whl` and `pip install tensorRT/uff/<path-to-wheel>.whl`).
 3. To verify I made sure I could do the following (of course you have to install tensorflow - see below):
-```import tensorflow
-   import uff 
-   import tensorrt as trr
+```
+    import tensorflow
+    import uff 
+    import tensorrt as trr
 ```
 This worked with tensorRT v4.0.0.3, cuda-9.0, tensorflow version: 1.4.1, pytorch version: 0.3.0.post4. Pytorch was needed for the example below of converting a pytorch model to run on an tensorRT engine.
 
