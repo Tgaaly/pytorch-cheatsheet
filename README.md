@@ -220,9 +220,10 @@ Update: Pytorch now supports exporting models to other frameworks starting with 
 
 Pytorch v0.3.0: Model Exporter to ONNX (ship PyTorch to Caffe2, CoreML, CNTK, MXNet, Tensorflow)
 
-<> Currently there is no supported way within Pytorch to serve/deploy models efficiently. 
+<!-- Currently there is no supported way within Pytorch to serve/deploy models efficiently. 
 For the sake of resuming training Pytorch allows saving and loading the models via two means - see http://pytorch.org/docs/master/notes/serialization.html. 
 Beware that load/save pytorch models breaks down if the directory structure or class definitions change so when its time to deploy the model (and by this I mean running it purely from python on another machine for example) the model class has to be added to the python path in order for the class to be instantiated. It's actually very weird. If you save a model, change the directory structure (e.g. put the model in a subfolder) and try to load the model - it will not load. It will complain that it cannot find the class definition. The work around would be to add the class definition to your python path. This is written as a note on the Pytorch documentation page http://pytorch.org/docs/master/notes/serialization.html. I'll add an example on this later on.
+-->
 
 ## Loss Functions
 
