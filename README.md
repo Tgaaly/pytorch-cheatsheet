@@ -215,15 +215,37 @@ else just use `pip install tensorflow-gpu` for the latest version.
 Example of doing this for Pytorch and tensorRT 3.0 (this also worked for my tensorRT version of 4.0): 
 https://docs.nvidia.com/deeplearning/sdk/tensorrt-api/topics/topics/workflows/manually_construct_tensorrt_engine.html
 
+## Portability to Other Frameworks
+
+Pytorch now (as of v0.3.0) supports exporting models to other frameworks starting with Caffe2AI and MSCNTK. So now models can be deployed/served!
+
+<!--Pytorch v0.3.0: Model Exporter to ONNX (ship PyTorch to Caffe2, CoreML, CNTK, MXNet, Tensorflow)-->
+
 ## Saving/Loading Pytorch Models
-Update: Pytorch now supports exporting models to other frameworks starting with Caffe2AI and MSCNTK. So now models can be deployed/served!
 
-Pytorch v0.3.0: Model Exporter to ONNX (ship PyTorch to Caffe2, CoreML, CNTK, MXNet, Tensorflow)
-
-<!-- Currently there is no supported way within Pytorch to serve/deploy models efficiently. 
-For the sake of resuming training Pytorch allows saving and loading the models via two means - see http://pytorch.org/docs/master/notes/serialization.html. 
-Beware that load/save pytorch models breaks down if the directory structure or class definitions change so when its time to deploy the model (and by this I mean running it purely from python on another machine for example) the model class has to be added to the python path in order for the class to be instantiated. It's actually very weird. If you save a model, change the directory structure (e.g. put the model in a subfolder) and try to load the model - it will not load. It will complain that it cannot find the class definition. The work around would be to add the class definition to your python path. This is written as a note on the Pytorch documentation page http://pytorch.org/docs/master/notes/serialization.html. I'll add an example on this later on.
+<!--
+It is not recommended to save the entire model (architecture and weights) the way that you did because that method will not work if you try to load the model in a different project. For example, if you try to send your model file ./torch_model_v1 to me and I try to load it with torch.load("./torch_model_v1") I will get an error because it’s likely my project won’t have the exact same directory structure as your project.
+Instead you should save only the model weights (state dict), define the architecture in code, then load the weights into the new models state dict.
 -->
+
+<!--Currently there is no supported way within Pytorch to serve/deploy models efficiently. -->
+
+For the sake of resuming training Pytorch allows saving and loading the models via two means - see http://pytorch.org/docs/master/notes/serialization.html. 
+Beware that load/save pytorch models breaks down if the directory structure or class definitions change so when its time to deploy the model (and by this I mean running it purely from python on another machine for example) the model class has to be added to the python path in order for the class to be instantiated. It's actually very weird. If you save a model, change the directory structure (e.g. put the model in a subfolder) and try to load the model - it will not load. It will complain that it cannot find the class definition. The work around would be to add the class definition to your python path. This is written as a note on the Pytorch documentation page http://pytorch.org/docs/master/notes/serialization.html. See example here:
+
+Save the models weights and define the model architecture in the code. You can then load the weights into the new model state dict. 
+
+### Save 
+```
+torch.save(model.state_dict(), "./torch_model_v1.pt")
+```
+
+### Load
+```
+model = Model() # the model should be defined with the same code you used to create the trained model
+state_dict = torch.load( "./torch_model_v1.pt")
+model.load_state_dict(state_dict)
+```
 
 ## Loss Functions
 
