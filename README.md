@@ -247,6 +247,8 @@ state_dict = torch.load( "./torch_model_v1.pt")
 model.load_state_dict(state_dict)
 ```
 
+[taken from https://discuss.pytorch.org/t/using-a-pytorch-model-for-inference/14770/2]
+
 ## Loss Functions
 
 A list of all the ready-made losses is here: http://pytorch.org/docs/master/nn.html#loss-functions
