@@ -219,7 +219,7 @@ https://docs.nvidia.com/deeplearning/sdk/tensorrt-api/topics/topics/workflows/ma
 
 Pytorch now (as of v0.3.0) supports exporting models to other frameworks starting with Caffe2AI and MSCNTK. So now models can be deployed/served!
 
-<!--Pytorch v0.3.0: Model Exporter to ONNX (ship PyTorch to Caffe2, CoreML, CNTK, MXNet, Tensorflow)-->
+<!--Pytorch v0.3.0: Model Exporter to ONNX (ship PyTorch to Caffe2 (part of Pytorch now), CoreML, CNTK, MXNet, Tensorflow)-->
 
 ## Saving/Loading Pytorch Models
 
