@@ -174,7 +174,9 @@ Use `torch.manual_seed(seed)` in addition to `np.random.seed(seed)` to make trai
 ## Activations
 
 `nn.ReLU(inplace=True)`
+
 from the Pytorch forums:
+
 `inplace=True` means that it will modify the input directly, without allocating any additional output. It can sometimes slightly decrease the memory usage, but may not always be a valid operation (because the original input is destroyed). However, if you don’t see an error, it means that your use case is valid.
 
 ## Model Inference
